@@ -1,0 +1,11 @@
+{
+  "name": "techbyo.co.zw",
+  "version": "0.0.1",
+  "description": "techbyo.co.zw website",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Qawelesizwe Mlilo <qawemlilo@gmail.com> (http://blog.ragingflame.co.za/)",
+  "license": "MIT"
+}
