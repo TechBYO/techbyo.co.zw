@@ -1,0 +1,42 @@
+  
+  {{> flash}}
+
+  <div class="row">
+    <div class="col-md-6 intro-block">
+      <p>
+      	TechBYO is an open initiative that aims to build a vibrant tech community in bulawayo.
+      </p>
+      <p>Our main goals include:</p>
+      <ul>
+        <li>Facilitating collaboration within the bulawayo tech community</li> 
+        <li>Sharing information on the tech trends</li>
+        <li>Initiating projects that leverage technology to solve community problems</p>
+      </ul>
+    </div>
+
+    <div class="col-md-6"> 
+      <div class="panel panel-warning">
+        <div class="panel-heading">
+          <h3 class="panel-title">Join the community &amp; get all updates</h3>
+        </div>
+        <div class="panel-body">
+          <form role="form" action="/subscribe" name="subscribe" method="post">
+            <div class="form-group">
+              <label for="name">Full Name:</label>
+              <input type="text" class="form-control" id="name" name="name" placeholder="Name" required>
+            </div>
+
+            <div class="form-group">
+              <label for="email">Email Address:</label>
+              <input type="text" class="form-control" id="email" name="email" placeholder="Email" required>
+            </div>
+
+            <button type="submit" id="submit" name="submit" class="btn btn-warning btn-block">Submit</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+ 
