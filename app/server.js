@@ -1,5 +1,5 @@
 
-module.exports = function (config) {
+module.exports = function () {
   "use strict";
 
   let express = require('express');

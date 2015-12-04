@@ -1,10 +1,9 @@
-// main app
 
+// main app
 var config = require('./config');
-var env = process.env.NODE_ENV;
 var app;
 
-if (env === 'production') {
+if (process.env.NODE_ENV === 'production') {
 	app = require('./src');
 }
 else {
@@ -12,5 +11,5 @@ else {
 }
 
 
-app.start(config);
+app.start();
 

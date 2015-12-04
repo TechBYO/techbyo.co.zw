@@ -4,8 +4,8 @@ var server = require('./server');
 var routes = require('./routes');
 
 
-module.exports.start = function (config) {
-	var app = server(config);
+module.exports.start = function () {
+	var app = server();
 
 	routes.setup(app);
 

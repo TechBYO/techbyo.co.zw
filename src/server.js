@@ -1,6 +1,6 @@
 'use strict';
 
-module.exports = function (config) {
+module.exports = function () {
   "use strict";
 
   var express = require('express');
