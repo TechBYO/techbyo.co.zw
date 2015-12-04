@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "export NODE_ENV=development && babel app --out-dir src && nodemon"
+    "dev": "export NODE_ENV=development && babel app --out-dir src && nodemon",
+    "start": "pm2 start index.js"
   },
   "author": "Qawelesizwe Mlilo <qawemlilo@gmail.com> (http://blog.ragingflame.co.za/)",
   "repository": {
