@@ -4,8 +4,6 @@ var Bookshelf = null;
 
 module.exports = function (config) {
   "use strict";
-
-  console.log(config.mysql)
   
   if (Bookshelf) {
   	return Bookshelf;
