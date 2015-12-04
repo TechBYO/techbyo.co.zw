@@ -15,7 +15,9 @@ Bookshelf.Model = Bookshelf.Model.extend({
     var self = this;
 
     self.on('saving', function (model, attributes, options) {
-      return self.saving(model, attributes, options);
+      if (self.has('slug')) {
+        return self.saving(model, attributes, options);
+      }
     });
   },
 
@@ -39,7 +41,7 @@ Bookshelf.Model = Bookshelf.Model.extend({
     var table = self.tableName;
 
     // if is new or slug has changed and has slug field - generate new slug
-    if (self.has('slug') && self.has('slug') && self.hasChanged('slug') || !self.get('slug')) {
+    if (self.hasChanged('slug') || !self.get('slug')) {
       return self.generateSlug(self.get('slug') || self.get('name') || self.get('title')).then(function (slug) {
         self.set({ slug: slug });
       });

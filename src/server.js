@@ -12,7 +12,6 @@ module.exports = function (config) {
   var errorHandler = require('errorhandler');
   var hbs = require('hbs');
   var path = require('path');
-  var passport = require('passport');
   var _ = require('lodash');
 
   /**

@@ -21,7 +21,8 @@ module.exports.save = function (req, res, next) {
     req.flash('success', { msg: "Thank you for submitting your details. Expect an email fom us soon." });
     return res.redirect('back');
   })['catch'](function (error) {
-    req.flash('error', { msg: 'Details could not be saved.' });
+    console.error(error.stack);
+    req.flash('error', { msg: 'An error occured, your details could not be saved.' });
     return res.redirect('back');
   });
 };
