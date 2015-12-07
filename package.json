@@ -1,11 +1,12 @@
 {
   "name": "techbyo.co.zw",
   "version": "0.0.1",
-  "description": "techbyo.co.zw website",
+  "description": "TechBYO website",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "export NODE_ENV=development && babel app --out-dir src && nodemon"
+    "dev": "export NODE_ENV=development && nodemon",
+    "start": "export NODE_ENV=production && pm2 start index.js"
   },
   "author": "Qawelesizwe Mlilo <qawemlilo@gmail.com> (http://blog.ragingflame.co.za/)",
   "repository": {

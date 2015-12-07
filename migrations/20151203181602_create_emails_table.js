@@ -1,17 +1,10 @@
 
-var migrations;
-
-if (process.env.NODE_ENV === 'production') {
-	migrations = require('../src/lib/migrations');
-}
-else {
-	migrations = require('../app/lib/migrations');
-}
-
+var migrations = require('../app/lib/migrations');
 var schema = require('../schemas/schema_1');
 
 exports.up = function(knex, Promise) {
-    return migrations.createTable(knex, schema)
+    return migrations
+    .createTable(knex, schema)
     .then(function () {
     	console.log(schema.tableName + ' created table!');
     })
