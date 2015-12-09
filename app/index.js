@@ -1,11 +1,11 @@
-// main app
+"use strict"
 
-var server = require('./server');
-var routes = require('./routes');
+let server = require('./server');
+let routes = require('./routes');
 
 
 module.exports.start = function () {
-	var app = server();
+	let app = server();
 
 	routes.setup(app);
 

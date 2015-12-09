@@ -1,4 +1,4 @@
-
+"use strict"
 
 // site controller
 module.exports.home = function (req, res, next) {

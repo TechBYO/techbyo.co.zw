@@ -1,7 +1,7 @@
+"use strict"
 
-
-var site = require('./controllers/site');
-var email = require('./controllers/email');
+let site = require('./controllers/site');
+let email = require('./controllers/email');
 
 // routes
 module.exports.setup = function (app) {

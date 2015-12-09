@@ -1,10 +1,10 @@
 "use strict";
 
 
-var Base  = require('./base');
+let Base  = require('./base');
 
 
-var Email = Base.Model.extend({
+let Email = Base.Model.extend({
 
   tableName: 'emails',
 

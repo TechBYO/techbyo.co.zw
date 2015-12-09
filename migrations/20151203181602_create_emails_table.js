@@ -1,6 +1,7 @@
+"use strict"
 
-var migrations = require('../app/lib/migrations');
-var schema = require('../schemas/schema_1');
+let migrations = require('../app/lib/migrations');
+let schema = require('../schemas/schema_1');
 
 exports.up = function(knex, Promise) {
     return migrations

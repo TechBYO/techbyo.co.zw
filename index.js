@@ -1,7 +1,7 @@
+"use strict"
 
 // main app
-var app = require('./app');
+let app = require('./app');
 
 
 app.start();
-

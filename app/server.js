@@ -1,3 +1,4 @@
+"use strict"
 
 module.exports = function () {
   "use strict";
@@ -5,7 +6,7 @@ module.exports = function () {
   let express = require('express');
   let expressValidator = require('express-validator');
   let session = require('express-session');
-  var flash = require('express-flash');
+  let flash = require('express-flash');
   let logger = require('morgan');
   let bodyParser = require('body-parser');
   let errorHandler = require('errorhandler');
@@ -58,7 +59,3 @@ module.exports = function () {
 
   return server;
 };
-
-
-
-

@@ -1,7 +1,7 @@
-// Update with your config settings.
+"use strict"
 
 
-var config = require('./config');
+let config = require('./config');
 
 module.exports = {
 

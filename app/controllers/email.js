@@ -1,6 +1,6 @@
+"use strict"
 
-
-var Email = require('../models/email');
+let Email = require('../models/email');
 
 
 // email controller
@@ -8,7 +8,7 @@ module.exports.save = function (req, res, next) {
     req.assert('name', 'Name must be at least 3 characters long').len(3);
     req.assert('email', 'Please enter a valid email').isEmail();
 
-    var errors = req.validationErrors();
+    let errors = req.validationErrors();
 
     if (errors) {
       req.flash('errors', errors);

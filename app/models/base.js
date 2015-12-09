@@ -3,22 +3,18 @@
 /**
  * Module dependencies.
  */
-var config = require('../../config');
-var Bookshelf  = require('../lib/dbconnect')(config);
-var unidecode  = require('unidecode');
-var bluebird  = require('bluebird');
-var sanitize   = require('validator').sanitize;
+let config = require('../../config');
+let Bookshelf  = require('../lib/dbconnect')(config);
+let unidecode  = require('unidecode');
+let bluebird  = require('bluebird');
+let sanitize   = require('validator').sanitize;
 
 
 Bookshelf.Model = Bookshelf.Model.extend({
 
   initialize: function () {
-    var self = this;
-
-    self.on('saving', function (model, attributes, options) {
-      if (self.has('slug')) {
-        return self.saving(model, attributes, options);
-      }
+    this.on('saving', (model, attributes, options) => {
+      return this.saving(model, attributes, options);
     });
   },
 
@@ -29,11 +25,10 @@ Bookshelf.Model = Bookshelf.Model.extend({
 
 
   getJSON: function (props) {
-    var self = this;
-    var json = {};
-    
-    props.forEach(function (prop) {
-      json[prop] = self.get(prop);
+    let json = {};
+
+    props.forEach((prop) => {
+      json[prop] = this.get(prop);
     });
 
     return json;
@@ -41,15 +36,16 @@ Bookshelf.Model = Bookshelf.Model.extend({
 
 
   saving: function (newObj, attr, options) {
-    var self = this;
-    var table = self.tableName;
+    let table = this.tableName;
 
     // if is new or slug has changed and has slug field - generate new slug
-    if (self.hasChanged('slug') || !self.get('slug')) {
-      return self.generateSlug(self.get('slug') || self.get('name') || self.get('title'))
-        .then(function (slug) {
-          self.set({slug: slug});
+    if(this.has('slug')) {
+      if (this.hasChanged('slug') || !this.get('slug')) {
+        return this.generateSlug(this.get('slug') || this.get('name') || this.get('title'))
+        .then((slug) => {
+          this.set({slug: slug});
         });
+      }
     }
   },
 
@@ -72,28 +68,27 @@ Bookshelf.Model = Bookshelf.Model.extend({
    * @return {Promise(String)} Resolves to a unique slug string
   */
   generateSlug: function (base) {
-    var self = this;
-    var slug;
-    var slugTryCount = 1;
-    var baseName = self.tableName.replace(/s$/, '');
+    let slug;
+    let slugTryCount = 1;
+    let baseName = this.tableName.replace(/s$/, '');
 
     // Look for a post with a matching slug, append an incrementing number if so
-    var checkIfSlugExists;
+    let checkIfSlugExists;
 
-    checkIfSlugExists = function (slugToFind) {
-      var args = {slug: slugToFind};
+    checkIfSlugExists = (slugToFind) => {
+      let args = {slug: slugToFind};
 
-      return self.constructor.forge(args)
+      return this.constructor.forge(args)
         .fetch()
         .then(function (found) {
-        var trimSpace;
-        
+        let trimSpace;
+
         if (!found) {
           return bluebird.resolve(slugToFind);
         }
-        
+
         slugTryCount += 1;
-        
+
         // If this is the first time through, add the hyphen
         if (slugTryCount === 2) {
           slugToFind += '-';
@@ -102,27 +97,27 @@ Bookshelf.Model = Bookshelf.Model.extend({
           trimSpace = -(String(slugTryCount - 1).length);
           slugToFind = slugToFind.slice(0, trimSpace);
         }
-        
+
         slugToFind += slugTryCount;
-        
+
         return checkIfSlugExists(slugToFind);
       });
     };
-    
+
     slug = base.trim();
-    
+
     // Remove non ascii characters
     slug = unidecode(slug);
-    
+
     // Remove URL reserved chars: `:/?#[]@!$&'()*+,;=` as well as `\%<>|^~£"`
     slug = slug.replace(/[:\/\?#\[\]@!$&'()*+,;=\\%<>\|\^~£"]/g, '')
       // Replace dots and spaces with a dash
       .replace(/(\s|\.)/g, '-')
       // Convert 2 or more dashes into a single dash
       .replace(/-+/g, '-')
- 
+
       .toLowerCase();
-    
+
     // Remove trailing hyphen
     slug = slug.charAt(slug.length - 1) === '-' ? slug.substr(0, slug.length - 1) : slug;
 

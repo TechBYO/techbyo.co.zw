@@ -3,6 +3,7 @@
 ### Getting started
 
 Requirements:
+
   - Node.js (v14.x)
   - MySQL
   - babel (`npm install -g babel-cli`)
@@ -17,7 +18,7 @@ Requirements:
 
 ### Migrations
 
-Migrations are generated using `knex` (`knex migrate:make migration_name`). 
+Migrations are generated using `knex` (`knex migrate:make migration_name`).
 When creating a new table it is recommended that you create a schema file inside the `schemas` directory.
 
 ### Schema API
